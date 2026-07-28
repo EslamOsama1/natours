@@ -42,7 +42,7 @@ const sendErrorPro = (err, res) => {
         })
         // programming or other unkowen error:don't leak error details
     } else {
-        console.log('ERROR', err);
+        // console.log('ERROR', err);
 
         res.status(500).json({
             status: 'error',

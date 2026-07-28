@@ -74,7 +74,7 @@ exports.getAll = Model => catchAsync(async (req, res, next) => {
 
 
     // ) SEND RESPONSE
-    console.log(req.requestTime)
+    // console.log(req.requestTime)
     res.status(200).json({
         status: "success",
         request_time: req.requestTime,
