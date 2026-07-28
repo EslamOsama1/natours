@@ -25,7 +25,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // 1)GLOBAIL MIDDLEWARES
 // implement CORS
-app.use(cors())
+app.use(cors()) // work only in simple request (get , post)
+
+app.options('*', cors())
+// app.options('/api/tours/:id' , cors())
 
 
 //Set Security HTTP headers
