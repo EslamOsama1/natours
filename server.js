@@ -26,8 +26,7 @@ Mongoose.connect(DB, {
     useCreateIndex: true,
     useFindAndModify: false
 }).then(() => console.log('DB connection successful!')
-)/*.catch(err => console.log( 'ERROR', err)) this an old way to handle Unhandeled rejacton 
-like the connection to DBs is cut and all anthor problems releted to dataBases and network conection*/
+)
 
 
 
