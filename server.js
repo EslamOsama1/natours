@@ -3,13 +3,6 @@ dotenv.config({ path: './config.env' });
 const app = require('./app');//To use config.env
 const Mongoose = require('mongoose')
 
-
-
-
-// console.log(app.get('env')); // return the enviroment wich we work on it (development)
-// console.log(process.env);
-// console.log(process.env);
-
 process.on('unhandledRejection', err => {// this like event handler 
     console.log(err.name, err.message) //this a new way to handle Unhandeled rejacton
     console.log('UNHANDLER REJECTION!! Shutting dowen')
@@ -43,8 +36,3 @@ let port = 8000
 const server = app.listen(port, () => {
     console.log(`App running on ${port}`)
 })
-
-
-
-
-// console.log(x);

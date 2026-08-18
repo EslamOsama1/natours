@@ -103,9 +103,6 @@ const tourSchema = new Mongoose.Schema({
             day: Number
         }
     ],
-    //Embeded
-    // guides: Array   
-    //referance
     guides: [
         {
             type: Mongoose.Schema.ObjectId,
@@ -140,24 +137,6 @@ tourSchema.pre('save', function (next) {
     next();
 })
 
-//this how we can embaded a user doc into a tour doc and return all the user data not only the id
-// tourSchema.pre('save', async function (next) {
-//     const guidesPromises = this.guides.map(async id => await User.findById(id))//on every itration this return a promise and we will get a group of promises
-//     this.guides = await Promise.all(guidesPromises); // now this will handle the all promises all at once
-//     next();
-// })
-
-//we can also have a multiple pre midleware
-// tourSchema.pre('save', function (next) {
-//     console.log('will save document...')
-//     next();
-// })
-// tourSchema.post('save', function (doc, next) { // doc reffer into the finished document 
-//     console.log(doc);
-//     next();
-// })
-
-
 //Query Midleware
 // in this type of MW we will deal with query and now this will point into the current query 
 tourSchema.pre(/^find/, function (next) {
@@ -182,30 +161,7 @@ tourSchema.post(/^find/, function (docs, next) {// docs reffer to all the docume
     next()
 })
 
-
-
-//Aggregation Middleware
-// tourSchema.pre('aggregate', function (next) {
-//     this.pipeline().unshift({ '$match': { secretTour: { $ne: true } } })
-//     console.log(this.pipeline())
-//     next()
-// })
-
-
-
-
-
 // her we create a simple model with our schema 
 const Tour = Mongoose.model('Tour', tourSchema);// make sure that the model name start with uppercase
-
-// // her we create a simple document with our model 
-// const testTour = new Tour({
-//     name: 'The Park Camper',
-//     // rating: 4.7,
-//     price: 998
-// })
-// testTour.save().then(doc => {
-//     console.log(doc)
-// }).catch(err => console.log('ERROR ', err))
 
 module.exports = Tour

@@ -8,22 +8,7 @@ const reviesRouter = require('./reviews-Route');
 
 let tourRouter = express.Router();
 
-
-//Nested Route
-// POST /tour/23df7df98/reviews
-// tourRouter.route('/:tourId/reviews')
-//     .post(authController.protect, authController.restrictTo('user'), reviewController.createReview) 
-// this the right way to do nested route , her we can create review on a spasifice Tour
 tourRouter.use('/:tourId/reviews', reviesRouter)
-
-
-
-// tourRouter.param('id', tourController.checkID);
-
-//create a checkBody middlewar
-//check the body contains the name and price property
-// if not , send back 400 (bad request)
-// add it to post handler req
 
 tourRouter.route('/top-5-cheap')
     .get(tourController.aliasTopTour, tourController.getAlltours)
@@ -34,8 +19,6 @@ tourRouter.route('/monthly-plan/:year').get(authController.protect, authControll
 
 
 tourRouter.route('/tours-within/:distance/center/:latlng/unit/:unit').get(tourController.getToursWithin)
-// /tours-within?distance=233&center=-40,45&unit=mi
-// /tours-within/233/center/-40,45/unit/mi
 
 tourRouter.route('/distances/:latlng/unit/:unit').get(tourController.getDistances)
 

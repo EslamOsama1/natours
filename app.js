@@ -69,13 +69,6 @@ app.use(hpp({
     ]
 }))// api/v1/tours?sort=duration&sort=price
 
-
-
-//create our own middleware
-// app.use((req, res, next) => { // that will be ably to every sengle request because we didnt spacify a rout   
-//     console.log("hello from the middleware");
-//     next()
-// })
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     next()

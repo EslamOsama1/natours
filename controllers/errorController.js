@@ -66,19 +66,19 @@ module.exports = (err, req, res, next) => {
         }
 
         if (error.code === 11000) {
-            error = handleDuplicateFieldsDB(error) // with will happen only in production moode
+            error = handleDuplicateFieldsDB(error)
         }
 
         if (error.name === 'ValidationError') {
-            error = handleValidatorErrorDB(error) // with will happen only in production moode
+            error = handleValidatorErrorDB(error)
         }
 
         if (error.name === 'JsonWebTokenError') {
-            error = handleJWTEror(error) // with will happen only in production moode
+            error = handleJWTEror(error)
         }
 
         if (error.name === 'TokenExpiredError') {
-            error = handleJWTExpiredEror(error) // with will happen only in production moode
+            error = handleJWTExpiredEror(error)
         }
 
         sendErrorPro(error, res)

@@ -37,17 +37,6 @@ const reviewSchema = new Mongoose.Schema({
 //prevent duplicate reviews with same user on the same tour
 reviewSchema.index({ tour: 1, user: 1 }, { unique: true })
 
-// reviewSchema.pre(/^find/, function (next) {
-//     this.populate({
-//         path: 'tour',
-//         select: 'name'
-//     }).populate({
-//         path: 'user',
-//         select: 'name photo'
-//     })
-//     next()
-// })
-
 
 reviewSchema.pre(/^find/, function (next) {
     this.populate({

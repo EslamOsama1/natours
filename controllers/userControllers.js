@@ -17,17 +17,6 @@ const factory = require('./handlerFactory');
 //   filename: '689ecbe9f32039f77bdd6276548427e9',
 //   size: 3043
 // }
-// configur file upload ----------------------
-// const multerStorage = multer.diskStorage({
-//     destination: (req, file, cb) => { // cd => call Back
-//         cb(null, 'public/img/users') // null here mean that their is no error
-//     },
-//     filename: (req, file, cb) => {
-//         //user-fdrgghpkporg-2343254.jpeg = user-userid-timestamp.jpeg
-//         const ext = file.mimetype.split('/')[1];
-//         cb(null, `user-${req.user.id}-${Date.now()}.${ext}`)
-//     }
-// });
 
 const multerStorage = multer.memoryStorage();// store the image temprory in the RAM after edditing it (req.file.buffer)
 
@@ -108,23 +97,6 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
     })
 })
 
-// exports.createUsers =factory.createOne(User) // we can replace this endpoint with signup endpoint
-
 exports.getUser = factory.getOne(User);
-
-// exports.updateUser = (req, res) => {
-//     res.status(500).json({
-//         status: 'error',
-//         message: 'this rout is not yet defined'
-//     })
-// }
-
-// exports.deleteUser = (req, res) => {
-//     res.status(500).json({
-//         status: 'error',
-//         message: 'this rout is not yet defined'
-//     })
-// }
-//do not update password with this
 exports.deleteUser = factory.deleteOne(User)
 exports.updateUser = factory.updateOne(User)

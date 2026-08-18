@@ -12,9 +12,6 @@ userRouter.post('/forgotPassword', authController.forgotPassword)//will reciev t
 userRouter.patch('/resetPassword/:token', authController.resetPassword)//will reciev the token
 
 
-//form her to the end every endpoint need protect and we will not add to every on insted we will 
-//add a midleware like that 
-
 userRouter.use(authController.protect)// now every endpoint comming after this midleware will become protected by default
 
 userRouter.patch('/updateMyPassword', authController.updatePassword)
